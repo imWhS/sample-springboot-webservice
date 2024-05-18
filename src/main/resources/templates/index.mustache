@@ -1,9 +1,17 @@
 {{>layout/header}}
-<h1>Web Service powered by Spring Boot</h1>
+<h1>New Web Service powered by Spring Boot</h1>
 <div class="col-md-12">
     <div class="row">
         <div class="col-md-6">
             <a href="/posts/save" role="button" class="btn btn-primary">Write a new post</a>
+
+            {{#userName}}
+                Welcome, <span id="member">{{userName}}</span>
+                <a href="/logout" class="btn btn-info active" role="button">Log out</a>
+            {{/userName}}
+            {{^userName}}
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Login with Google</a>
+            {{/userName}}
         </div>
     </div>
     <br>

@@ -2,6 +2,7 @@ var main = {
     init : function () {
         var _this = this;
         $('#btn-save').on('click', function () {
+            alert('게시물 저장을 시도합니다');
             _this.save();
         });
         $('#btn-update').on('click', function () {
@@ -19,8 +20,6 @@ var main = {
             content: $('#content').val()
         };
 
-        alert("title: " + data.title);
-
         $.ajax({
             type: 'POST',
             url: '/api/v1/posts',
@@ -31,6 +30,7 @@ var main = {
             alert('Completed save.');
             window.location.href = '/';
         }).fail(function (error) {
+            alert('fail save.')
         });
     },
 
@@ -49,7 +49,7 @@ var main = {
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
-            // alert('Completed update.');
+            alert('Completed update.');
             window.location.href = '/';
         }).fail(function (error) {
         });
