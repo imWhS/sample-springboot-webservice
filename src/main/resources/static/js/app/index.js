@@ -19,6 +19,8 @@ var main = {
             content: $('#content').val()
         };
 
+        alert("title: " + data.title);
+
         $.ajax({
             type: 'POST',
             url: '/api/v1/posts',
@@ -29,7 +31,6 @@ var main = {
             alert('Completed save.');
             window.location.href = '/';
         }).fail(function (error) {
-            alert(JSON.stringify(error));
         });
     },
 
@@ -48,10 +49,9 @@ var main = {
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
-            alert('Completed update.');
+            // alert('Completed update.');
             window.location.href = '/';
         }).fail(function (error) {
-            alert(JSON.stringify(error));
         });
     },
 
@@ -67,7 +67,6 @@ var main = {
             alert('Completed delete.');
             window.location.href = '/';
         }).fail(function (error) {
-            alert(JSON.stringify(error));
         });
     }
 
