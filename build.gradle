@@ -47,7 +47,7 @@ test {
 }
 
 jar {
-    enabled = false
+    enabled = true
     manifest {
         attributes(
                 'Main-Class': 'com/devwhs/springboot/Application.java'
