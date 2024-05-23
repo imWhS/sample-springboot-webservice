@@ -1,0 +1,23 @@
+language: java
+jdk:
+  - openjdk11
+
+# Travis CI 실행 브랜치 설정
+branches:
+  only:
+    - master
+
+# Travis CI 서버의 Home
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+# main 브랜치에 push 됐을 때 수행할 명령어 설정
+script: "./gradlew clean build"
+
+# CI 완료 알림을 발송할 메일 주소 설정
+notifications:
+  email:
+    recipients:
+      - heextory@icloud.com
