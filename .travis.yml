@@ -21,3 +21,20 @@ notifications:
   email:
     recipients:
       - heextory@icloud.com
+
+# 배포 파일을 S3로 전달하도록 설정
+before_deploy:
+  - zip -r sample-springboot-webservice *
+  - mkdir -p deploy
+  - mv sample-springboot-webservice.zip deploy/sample-springboot-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: sample-springboot-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
