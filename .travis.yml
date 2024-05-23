@@ -50,3 +50,5 @@ deploy:
     deployment_group: sample-springboot-webservice-group
     region: ap-northeast-2
     wait-until-deployed: true
+    on:
+      branch: main
