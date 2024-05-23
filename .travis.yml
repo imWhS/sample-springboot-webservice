@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk11
+  - openjdk17
 
 # Travis CI 실행 브랜치 설정
 branches:
