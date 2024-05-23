@@ -39,4 +39,14 @@ deploy:
     local_dir: deploy
     wait-until-deployed: true
     on:
-      brnach: main
+      branch: main
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: sample-springboot-build
+    key: sample-springboot-webservice.zip
+    bundle_type: zip
+    application: sample-springboot-webservice
+    deployment_group: sample-springboot-webservice-group
+    region: ap-northeast-2
+    wait-until-deployed: true
