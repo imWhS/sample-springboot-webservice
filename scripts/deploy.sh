@@ -9,16 +9,17 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 실행 중인 앱의 PID를 확인합니다."
 
-CURRENT_PID=$(pgrep -fl sample-springboot-webservice | grep jar | awk '{print $1}')
+# 정확한 프로세스 찾기
+CURRENT_PID=$(ps -ef | grep java | grep $PROJECT_NAME | grep -v grep | awk '{print $2}')
 
 echo "  - PID: $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then
-        echo "> 현재 앱이 실행 중이지 않습니다."
+    echo "> 현재 앱이 실행 중이지 않습니다."
 else
-        echo "> kill -15 $CURRENT_PID"
-        kill -15 $CURRENT_PID
-        sleep  5
+    echo "> kill -15 $CURRENT_PID"
+    kill -15 $CURRENT_PID
+    sleep 5
 fi
 
 echo "> 새 앱을 배포합니다."
